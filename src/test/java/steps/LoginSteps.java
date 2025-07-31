@@ -1,8 +1,8 @@
-package steps; // Changed from com.yourcompany.automationexercise.steps;
+package steps;
 
-import pages.AccountDeletedPage; // Changed import
-import pages.HomePage;           // Changed import
-import pages.LoginPage;          // Changed import
+import pages.AccountDeletedPage;
+import pages.HomePage;
+import pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -24,7 +24,7 @@ public class LoginSteps {
     public void givenUserIsOnHomePage() {
         homePage.navigateToHomePage();
         assertTrue(homePage.isHomePageVisible(), "Home page is not visible.");
-        homePage.handleConsentBanner(); // This line remains the same
+        // REMOVE THIS LINE: homePage.handleConsentBanner(); // <-- THIS LINE SHOULD BE REMOVED!
     }
 
 

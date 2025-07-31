@@ -20,18 +20,13 @@ public class HomePage {
 
     // === LOCATORS FOR CONSENT MODAL ===
     // IMPORTANT: YOU MUST FIND THE CORRECT LOCATORS BY INSPECTING THE LIVE WEBSITE!
-    // Example: This could be an ID for the whole modal dialog
-    private final By consentModalContainer = By.id("fc-dialog-container"); // Common for some consent tools, e.g., Fandom
-    // A more generic CSS selector for a dialog role, if no specific ID
-    // private final By consentModalContainer = By.cssSelector("[role='dialog'][aria-modal='true']");
+    // This could be an ID for the whole modal dialog. Verify this!
+    // Example: private final By consentModalContainer = By.id("fc-dialog-container");
+    private final By consentModalContainer = By.id("fc-dialog-container"); // <-- VERIFY THIS ID on automationexercise.com
 
-    // This is the "Accept" button within the modal
-    // Try to be specific. Look for text like "Accept All", "Got it", "Agree", "Continue"
-    private final By consentAcceptButton = By.xpath("//button[normalize-space()='Accept All']");
-    // Or if the text varies, and you want to catch any of them:
-    // private final By consentAcceptButton = By.xpath("//button[contains(normalize-space(),'Accept') or contains(normalize-space(),'Got it') or contains(normalize-space(),'Agree') or contains(normalize-space(),'Continue')]");
-    // Or by a data-qa attribute if present:
-    // private final By consentAcceptButton = By.cssSelector("button[data-qa='accept-cookies']");
+    // **UPDATED** consentAcceptButton using the className. Verify this!
+    // Example: private final By consentAcceptButton = By.className("fc-button-label");
+    private final By consentAcceptButton = By.className("fc-button-label"); // <-- VERIFY THIS CLASS NAME on automationexercise.com
     // ===================================
 
 
@@ -42,10 +37,13 @@ public class HomePage {
 
     public void navigateToHomePage() {
         driver.get("http://automationexercise.com");
+        // Call the consent banner handler right after navigating
+        handleConsentBanner();
     }
 
     public boolean isHomePageVisible() {
         try {
+            // Wait for a visible element on the home page after potential consent banner interaction
             wait.until(ExpectedConditions.visibilityOfElementLocated(homePageSlider));
             return driver.findElement(homePageSlider).isDisplayed();
         } catch (org.openqa.selenium.TimeoutException e) {
@@ -53,38 +51,31 @@ public class HomePage {
         }
     }
 
-    // Refined Method: Handle the cookie consent banner/modal
-    public void handleConsentBanner() {
+    // Handles clicking the consent banner if it appears
+    private void handleConsentBanner() {
         try {
-            System.out.println("Attempting to handle consent banner...");
-            // First, wait for the modal container itself to be visible
+            // Wait for the modal container to be visible
             wait.until(ExpectedConditions.visibilityOfElementLocated(consentModalContainer));
-            System.out.println("Consent modal container is visible.");
 
-            // Then, wait for the accept button *within* that visible modal and click it
+            // Wait for the accept button within the modal and click it
             WebElement acceptButton = wait.until(ExpectedConditions.elementToBeClickable(consentAcceptButton));
             acceptButton.click();
-            System.out.println("Clicked consent accept button.");
 
-            // Finally, wait for the modal to disappear after clicking
+            // Wait for the modal to disappear after clicking
             wait.until(ExpectedConditions.invisibilityOfElementLocated(consentModalContainer));
-            System.out.println("Consent modal has disappeared.");
 
         } catch (org.openqa.selenium.TimeoutException | org.openqa.selenium.NoSuchElementException e) {
-            // If the modal or button is not found or not clickable within the timeout,
-            // assume the banner didn't appear or was already handled.
-            System.out.println("No consent modal found or it was already handled.");
-            // You might want to log the exception (e.getMessage()) here for more details in debug logs
+            // If the banner doesn't appear or cannot be found, silently continue.
+            // This assumes the banner is not always present or is handled by other means.
+            System.out.println("Consent banner not found or already handled (or unclickable). Continuing without clicking.");
+            // If you *know* the banner should always appear and must be clicked,
+            // you might want to re-throw the exception here instead of catching silently.
         }
     }
 
+
     public void clickSignupLogin() {
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(signupLoginButton)).click();
-        } catch (Exception e) {
-            System.err.println("Failed to click Signup/Login button. It might be obscured or not interactable.");
-            throw e;
-        }
+        wait.until(ExpectedConditions.elementToBeClickable(signupLoginButton)).click();
     }
 
     public boolean isLoggedInAsVisible() {
