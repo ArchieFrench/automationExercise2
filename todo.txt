@@ -1,0 +1,4 @@
+THIS IS THE DEV BRANCH:
+
+git checkout dev
+git checkout -b <NAME OF BRANCH>
