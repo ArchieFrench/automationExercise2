@@ -1,5 +1,7 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import steps.LoginSteps;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,6 +61,34 @@ public class LoginTest {
         // 9. Click 'Delete Account' button.
         // 10. Verify that 'ACCOUNT DELETED!' is visible.
         loginSteps.andUserDeletesAccount();
+    }
+
+    @ParameterizedTest(name = "Block Login with incorrect email: {1}")
+    @CsvSource({
+            "barkmlackmore62@mgail.mco, Aspwords231",
+            "suermaneuseruser@user.com, passwrd1211",
+            "NameNameName@name.com namename223"
+    })
+    public void testCase3_LoginUserWithIncorrectCorrectEmailAndPassword(String email, String password) {
+        //similar to log in steps
+        loginSteps.givenUserIsOnHomePage();
+        loginSteps.whenUserClicksSignupLogin();
+
+        //diverts using invalid username and password fields
+        loginSteps.whenUserLogsIn(email, password);
+        //asserts whats true about a successful login is false in this context
+        loginSteps.thenUserIsNotLoggedInSuccessfully();
+    }
+
+    @Test
+    @DisplayName("Test the log out button: {2}")
+    public void testCase4_LogOutWhenUserPressesLogOut() {
+        //arranges all other steps
+        loginSteps.givenUserIsOnHomePage();
+        loginSteps.whenUserClicksSignupLogin();
+        loginSteps.whenUserLogsIn("markblackmore26@gmail.com", "Password123");
+        //assert that log out logs user out
+        //needs to be handled in login steps
     }
 
     @AfterEach

@@ -5,6 +5,7 @@ import pages.HomePage;           // Changed import
 import pages.LoginPage;          // Changed import
 import org.openqa.selenium.WebDriver;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginSteps {
@@ -26,6 +27,8 @@ public class LoginSteps {
         homePage.handleConsentBanner(); // This line remains the same
     }
 
+
+
     public void whenUserClicksSignupLogin() {
         homePage.clickSignupLogin();
         assertTrue(loginPage.isLoginToAccountHeadingVisible(), "'Login to your account' heading is not visible.");
@@ -37,6 +40,10 @@ public class LoginSteps {
 
     public void thenUserIsLoggedInSuccessfully() {
         assertTrue(homePage.isLoggedInAsVisible(), "User is not logged in successfully.");
+    }
+
+    public void thenUserIsNotLoggedInSuccessfully() {
+        assertFalse(homePage.isLoggedInAsVisible(), "User is not logged in successfully.");
     }
 
     public void andUserDeletesAccount() {
