@@ -155,10 +155,16 @@
                     </execution>
                 </executions>
                 <dependencies>
+<!--                    <dependency>-->
+<!--                        <groupId>net.serenity-bdd</groupId>-->
+<!--                        <artifactId>serenity-single-page-report</artifactId>-->
+<!--                        <version>${serenity.version}</version>-->
+<!--                    </dependency>-->
                     <dependency>
                         <groupId>net.serenity-bdd</groupId>
-                        <artifactId>serenity-single-page-report</artifactId>
-                        <version>${serenity.version}</version>
+                        <artifactId>serenity-cucumber</artifactId>
+                        <version>3.9.8</version>
+                        <scope>test</scope>
                     </dependency>
                 </dependencies>
             </plugin>
