@@ -24,15 +24,6 @@ For GRADLE, pen a command window and run:
 
 Both of the commands provided above will produce a Serenity test report in the `target/site/serenity` directory. Go take a look!
 
-
-
-
-
-
-
-
-
-
 ## Test Case Progress and Project Overview  
 
 ### 📌 Overview  
@@ -68,64 +59,52 @@ The system under test is a **web-based eCommerce application** where users can b
 | TC1          | Register User                                | ✅ Completed     | Successfully automated and verified registration flow.  |
 | TC2          | Login User with correct email and password   | ✅ Completed     | Automated login verified with valid credentials.        |
 | TC3          | Login User with incorrect email and password | ✅ Completed     | Automated negative test; verified correct error handling.|
-| TC12         | Add Products in Cart                         | ✅ Completed | Core add-to-cart flow implemented; validations pending. |
-
+| TC12         | Add Products in Cart                         | ✅ Completed     | Core add-to-cart flow implemented; validations pending. |
 
 **Number of tests:** 4 (executed)  
 **Percentage passed:** 100% (4 of 4 completed successfully)  
 
-### Definition of Done
+### Definition of Done  
 <img width="432" height="590" alt="image" src="https://github.com/user-attachments/assets/929a23e6-61d7-4b4c-a0f9-ce4ce0bbe32b" />
-
-
 
 ---
 
-🐞 Defects & Suggested Actions
-1. Unconventional Signup Flow
-Why it’s a defect:
+## 🐞 Defects & Suggested Actions
 
-Expected behavior: Most websites present a single-step form where users enter all essential credentials (email, password, confirm password) before creating an account. This is intuitive, familiar to users, and aligns with standard UX design.
+### 1. Unconventional Signup Flow
 
-Actual behavior: The site begins the signup with just "Name" and "Email," then unexpectedly redirects to a separate page for the rest of the information. This non-standard flow:
+**Description:**  
+Unlike standard signup forms that present fields like **Email**, **Password**, and **Confirm Password** on a single page, this application uses a two-step process:
 
-Breaks user expectations.
+- **Step 1:** The user enters only **Name** and **Email**.
+- **Step 2:** The user is taken to a new page to provide more information such as **Password**, **Title**, **Date of Birth**, and other account details.
 
-Can confuse automation scripts that are written assuming a single form submission.
+**Why this is a defect:**  
+- It deviates from standard user experience expectations for registration.  
+- Users may be confused or drop off due to the unexpected redirection.  
+- Automation scripts that assume a single-page form may break.  
+- Page transitions require additional handling in test automation to ensure all fields are validated properly across both steps.
 
-Increases the chance of user drop-off if the transition is not handled smoothly.
+**Suggested Action:**  
+- Treat this as a **multi-step form** in testing documentation and scripts.  
+- Ensure test cases and automation flows are updated to verify each stage separately and confirm that data passes correctly from step 1 to step 2.
 
-Why it matters for testing: This is a flow-based form, not a flat form. Many automation frameworks treat form submission as a single event, so this requires special handling in scripts to manage the transition between pages and ensure form continuity.
+---
 
-Suggested Action:
+### 2. Country-City Mismatch Validation Issue
 
-Clearly document and handle the multi-step flow in test cases.
+**Description:**  
+During registration, the user is allowed to select **India** as the country but still enter **Glasgow** (a UK city) as the city. The form does not trigger any validation error or warning.
 
-Ensure test automation recognizes the change in context (e.g., page navigation, DOM changes).
+**Why this is a defect:**  
+- Leads to **logically inconsistent data** in the system.  
+- Breaks basic **geographic integrity rules**—a user should not be able to pair mismatched country and city combinations.  
+- Could negatively impact downstream systems (e.g., shipping, reporting, or region-specific features).  
+- Indicates a **lack of contextual validation** on the front end or back end.
 
-2. Country-City Mismatch Validation Issue
-Why it’s a defect:
-
-Expected behavior: When a user selects a country (e.g., India), the system should restrict or validate the city field to ensure consistency (e.g., only Indian cities allowed).
-
-Actual behavior: You can enter a city like "Glasgow" (a UK city) even when "India" is selected as the country — and the system accepts it without error.
-
-Why this is a problem:
-
-It undermines data integrity — results in nonsensical or contradictory user profiles.
-
-Real-world systems using this data (e.g., shipping, marketing) could fail or behave unpredictably.
-
-It’s a missed validation opportunity, and automation scripts may pass despite flawed user input.
-
-This is a clear business logic flaw — even if the field technically allows free text, it should be validated in context.
-
-Suggested Action:
-
-Add validation checks to ensure the entered city logically matches the selected country.
-
-Include negative test cases in automation to ensure invalid combinations are rejected.
-
+**Suggested Action:**  
+- Implement country-city validation rules to prevent incompatible combinations.  
+- Add **negative test cases** to the automation suite that attempt invalid city-country pairings and expect proper error handling.
 
 ---
 
@@ -153,4 +132,4 @@ Include negative test cases in automation to ensure invalid combinations are rej
 - Using a **topological sort** gave structure to test case dependencies.  
 - **Pair programming** improved accuracy and productivity.  
 - The **branching and merging workflow** provided hands-on experience with version control and resolving conflicts.  
-- A **Trello board** helped track progress, blockers, and priorities effectively.  
+- A **Trello board** helped track progress, blockers, and priorities effectively.
