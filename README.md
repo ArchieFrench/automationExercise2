@@ -89,6 +89,22 @@ Unlike standard signup forms that present fields like **Email**, **Password**, a
 - Treat this as a **multi-step form** in testing documentation and scripts.  
 - Ensure test cases and automation flows are updated to verify each stage separately and confirm that data passes correctly from step 1 to step 2.
 
+###2. Button Blocked by Advertisement Pop-Up
+**Description:**
+On the product listing page, a persistent advertisement banner appears at the bottom of the screen. This banner occasionally obstructs the “Add to cart” button, making it unclickable during automated test execution.
+
+**Why this is a defect:**
+- Prevents reliable access to critical UI elements, such as the "Add to cart" button.
+- Interferes with test automation flows, causing failures unrelated to the actual application logic.
+- Introduces false negatives in test reports, increasing debugging time.
+- Results in inconsistent test outcomes depending on ad timing and page load speed.
+
+**Suggested Action:**
+- Implement a scroll-to-element action before attempting to click buttons that may be blocked.
+- Where possible, add logic to detect and dismiss pop-up ads or adjust viewport/window size in tests.
+- Capture and document such cases with screenshots for test reporting and potential stakeholder review.
+
+**Screenshot Evidence:**
 ---
 
 ### 2. Country-City Mismatch Validation Issue
