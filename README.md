@@ -91,11 +91,11 @@ Unlike standard signup forms that present fields like **Email**, **Password**, a
 - Treat this as a **multi-step form** in testing documentation and scripts.  
 - Ensure test cases and automation flows are updated to verify each stage separately and confirm that data passes correctly from step 1 to step 2.
 
-### 2. Country-City Mismatch Validation Issue
+### 2. Country-State-City Mismatch Validation Issue
 <img width="761" height="380" alt="image" src="https://github.com/user-attachments/assets/abdffeb8-9bd5-41c0-adf4-13b812ba30b9" />
 
 **Description:**  
-During registration, the user is allowed to select **India** as the country but still enter **Glasgow** (a UK city) as the city. The form does not trigger any validation error or warning.
+During registration, the user is allowed to select **India** as the country but still enter any other city, for example, **Glasgow** (a UK city) as the city. The form does not trigger any validation error or warning.
 
 **Why this is a defect:**  
 - Leads to **logically inconsistent data** in the system.  
