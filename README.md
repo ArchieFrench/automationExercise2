@@ -163,12 +163,6 @@ On the product listing page, a persistent advertisement banner appears at the bo
 
 ### 🔄 Retrospective / Lessons Learned  
 
-# 🧪 Serenity JUnit Starter Project Retrospective
-
-This document reflects on the collaborative work done in the Serenity JUnit Starter project. It outlines what went well, what could be improved, key lessons learned, and takeaways for future projects.
-
----
-
 ## ✅ What Went Well
 
 ### 🧑‍💻 Pair Programming  
