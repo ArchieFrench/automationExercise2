@@ -74,8 +74,9 @@ The system under test is a **web-based eCommerce application** where users can b
 **Number of tests:** 4 (executed)  
 **Percentage passed:** 100% (4 of 4 completed successfully)  
 
-### Done
-<img width="428" height="583" alt="image" src="https://github.com/user-attachments/assets/95cbce70-35a9-4a87-9499-fbe145d8e2fa" />
+### Definition of Done
+<img width="432" height="590" alt="image" src="https://github.com/user-attachments/assets/929a23e6-61d7-4b4c-a0f9-ce4ce0bbe32b" />
+
 
 
 ---
