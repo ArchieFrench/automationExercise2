@@ -89,7 +89,7 @@ Unlike standard signup forms that present fields like **Email**, **Password**, a
 - Treat this as a **multi-step form** in testing documentation and scripts.  
 - Ensure test cases and automation flows are updated to verify each stage separately and confirm that data passes correctly from step 1 to step 2.
 
-###2. Button Blocked by Advertisement Pop-Up
+### 2. Button Blocked by Advertisement Pop-Up
 **Description:**
 On the product listing page, a persistent advertisement banner appears at the bottom of the screen. This banner occasionally obstructs the “Add to cart” button, making it unclickable during automated test execution.
 
@@ -105,6 +105,9 @@ On the product listing page, a persistent advertisement banner appears at the bo
 - Capture and document such cases with screenshots for test reporting and potential stakeholder review.
 
 **Screenshot Evidence:**
+<img width="1304" height="650" alt="Pop up ad blocks button" src="https://github.com/user-attachments/assets/21f2e244-013b-4134-91a7-58bd32de6be9" />
+<img width="975" height="692" alt="Screenshot 2025-08-01 at 11 35 42" src="https://github.com/user-attachments/assets/4530777b-d73f-40d6-a7de-5bb2db02c2f1" />
+
 ---
 
 ### 2. Country-City Mismatch Validation Issue
