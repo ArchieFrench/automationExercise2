@@ -91,7 +91,26 @@ Unlike standard signup forms that present fields like **Email**, **Password**, a
 - Treat this as a **multi-step form** in testing documentation and scripts.  
 - Ensure test cases and automation flows are updated to verify each stage separately and confirm that data passes correctly from step 1 to step 2.
 
-### 2. Button Blocked by Advertisement Pop-Up
+### 2. Country-City Mismatch Validation Issue
+<img width="761" height="380" alt="image" src="https://github.com/user-attachments/assets/abdffeb8-9bd5-41c0-adf4-13b812ba30b9" />
+
+**Description:**  
+During registration, the user is allowed to select **India** as the country but still enter **Glasgow** (a UK city) as the city. The form does not trigger any validation error or warning.
+
+**Why this is a defect:**  
+- Leads to **logically inconsistent data** in the system.  
+- Breaks basic **geographic integrity rules**—a user should not be able to pair mismatched country and city combinations.  
+- Could negatively impact downstream systems (e.g., shipping, reporting, or region-specific features).  
+- Indicates a **lack of contextual validation** on the front end or back end.
+
+**Suggested Action:**  
+- Implement country-city validation rules to prevent incompatible combinations.  
+- Add **negative test cases** to the automation suite that attempt invalid city-country pairings and expect proper error handling.
+
+---
+
+
+### 3. Button Blocked by Advertisement Pop-Up
 **Description:**
 On the product listing page, a persistent advertisement banner appears at the bottom of the screen. This banner occasionally obstructs the “Add to cart” button, making it unclickable during automated test execution.
 
@@ -112,22 +131,6 @@ On the product listing page, a persistent advertisement banner appears at the bo
 
 ---
 
-### 2. Country-City Mismatch Validation Issue
-
-**Description:**  
-During registration, the user is allowed to select **India** as the country but still enter **Glasgow** (a UK city) as the city. The form does not trigger any validation error or warning.
-
-**Why this is a defect:**  
-- Leads to **logically inconsistent data** in the system.  
-- Breaks basic **geographic integrity rules**—a user should not be able to pair mismatched country and city combinations.  
-- Could negatively impact downstream systems (e.g., shipping, reporting, or region-specific features).  
-- Indicates a **lack of contextual validation** on the front end or back end.
-
-**Suggested Action:**  
-- Implement country-city validation rules to prevent incompatible combinations.  
-- Add **negative test cases** to the automation suite that attempt invalid city-country pairings and expect proper error handling.
-
----
 
 ### 🏗️ Framework Overview  
 - **Serenity BDD**: Generates living documentation with rich test reports.  
