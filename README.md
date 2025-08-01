@@ -63,15 +63,16 @@ The system under test is a **web-based eCommerce application** where users can b
 
 ### 📊 Test Execution Summary  
 
-| Test Case ID | Description                | Status          | Notes                                                   |
-|--------------|----------------------------|-----------------|---------------------------------------------------------|
-| TC1          | User login & verification  | ✅ Completed     | Successfully automated and verified.                    |
-| TC2          | Browse product catalog     | ✅ Completed     | Automated with Selenium, stable in regression runs.     |
-| TC3          | Search & filter products   | ✅ Completed     | Verified against expected filters and search results.   |
-| TC12         | Add items to the cart      | ✅ Complete  | Core add-to-cart flow implemented; validations pending. |
+| Test Case ID | Description                                  | Status          | Notes                                                   |
+|--------------|----------------------------------------------|-----------------|---------------------------------------------------------|
+| TC1          | Register User                                | ✅ Completed     | Successfully automated and verified registration flow.  |
+| TC2          | Login User with correct email and password   | ✅ Completed     | Automated login verified with valid credentials.        |
+| TC3          | Login User with incorrect email and password | ✅ Completed     | Automated negative test; verified correct error handling.|
+| TC12         | Add Products in Cart                         | ✅ Completed | Core add-to-cart flow implemented; validations pending. |
+
 
 **Number of tests:** 4 (executed)  
-**Percentage passed:** 175% (4 of 4 completed successfully)  
+**Percentage passed:** 100% (4 of 4 completed successfully)  
 
 ---
 
@@ -103,10 +104,8 @@ The system under test is a **web-based eCommerce application** where users can b
 ---
 
 ### 🔄 Retrospective / Lessons Learned  
-- In hindsight, it would have been better to start with **one framework (Selenium)** rather than introducing **Serenity with Cucumber** at the beginning.  
-- Starting simpler would have reduced the learning curve and helped establish a stable baseline earlier.  
-- Branching out into Serenity (and potentially Cucumber) later on would have allowed for cleaner integration and less initial complexity.  
-- Breaking test cases into **dependencies using a topological sort** helped structure the workflow effectively.  
-- Working in **pairs** improved productivity and reduced errors during implementation.  
-- The **branching and merging workflow** gave valuable hands-on experience in handling merge conflicts and maintaining version control discipline.  
-- The **Trello board** provided excellent visibility of progress, blockers, and priorities.  
+- Starting with **one framework (Selenium)** would have reduced complexity before moving to Serenity and Cucumber.  
+- Using a **topological sort** gave structure to test case dependencies.  
+- **Pair programming** improved accuracy and productivity.  
+- The **branching and merging workflow** provided hands-on experience with version control and resolving conflicts.  
+- A **Trello board** helped track progress, blockers, and priorities effectively.  
