@@ -162,8 +162,62 @@ On the product listing page, a persistent advertisement banner appears at the bo
 ---
 
 ### 🔄 Retrospective / Lessons Learned  
-- Starting with **one framework (Selenium)** would have reduced complexity before moving to Serenity and Cucumber.  
-- Using a **topological sort** gave structure to test case dependencies.  
-- **Pair programming** improved accuracy and productivity.  
-- The **branching and merging workflow** provided hands-on experience with version control and resolving conflicts.  
-- A **Trello board** helped track progress, blockers, and priorities effectively.
+
+# 🧪 Serenity JUnit Starter Project Retrospective
+
+This document reflects on the collaborative work done in the Serenity JUnit Starter project. It outlines what went well, what could be improved, key lessons learned, and takeaways for future projects.
+
+---
+
+## ✅ What Went Well
+
+### 🧑‍💻 Pair Programming  
+Working in pairs led to higher code quality and fewer bugs. It also encouraged active knowledge sharing and made troubleshooting more efficient. Team members were able to divide tasks logically, review each other’s code, and iterate quickly.
+
+### 📌 Dependency Mapping via Topological Sort  
+Using a topological sort to structure test case execution brought much-needed clarity to dependencies. It ensured that test cases ran in a logical order, reducing failures due to unhandled prerequisites.
+
+### 🔀 Branching and Merging Workflow  
+Using separate feature branches per test case and merging them into the main branch after review gave hands-on experience with Git workflows. This not only improved version control practices but also taught conflict resolution and collaborative development strategies.
+
+### 📋 Trello for Task Management  
+The Trello board allowed us to visually track progress, identify blockers early, and manage priorities. It improved team coordination and kept the entire project transparent and on schedule.
+
+### 🎯 Test Focus  
+We prioritized automating core user flows—like login, registration, and adding products to the cart—which delivered meaningful coverage early. This helped establish confidence in the framework and ensured we tested high-value scenarios first.
+
+---
+
+## ⚠️ What Could Be Improved
+
+### 🧱 Framework Complexity  
+Adopting Serenity and Cucumber at the start introduced a steep learning curve. While powerful, they added complexity before the team had fully grasped Selenium and JUnit fundamentals. This impacted early productivity and delayed progress.
+
+### 🖱️ Pop-up/Ad Handling  
+Automated tests occasionally failed due to advertisement pop-ups blocking essential UI elements (like the "Add to cart" button). This led to unstable test execution and false negatives.  
+We should improve test resilience by adding scroll-to-element logic, using headless modes, or dismissing overlays programmatically.
+
+---
+
+## 💡 Lessons Learned
+
+### 🔧 Start with One Framework  
+Starting with just Selenium and JUnit would have reduced the cognitive load on the team. Once the basics were solidified, we could have layered in Serenity for reporting and Cucumber for behavior-driven development (BDD). This step-by-step adoption would have accelerated learning and boosted confidence.
+
+---
+
+## 📘 Key Takeaways for Future Projects
+
+### 🛠️ Start Simple  
+Begin with a minimal viable test setup. Once core test flows are stable and the team is comfortable, introduce advanced tools or integrations incrementally. Simplicity early on allows for rapid onboarding and more consistent execution.
+
+### 📈 Build for Stability First  
+Handle flaky elements (e.g., pop-ups, animations) early in the test lifecycle. Add retry logic, wait conditions, or headless testing to ensure test runs are deterministic and reproducible.
+
+### 🗂️ Establish Testing Standards  
+Implement templates for test case design, naming conventions, and assertions to ensure uniformity across the codebase. This reduces ramp-up time for new contributors and makes maintenance easier.
+
+### 🔁 Continuous Integration Ready  
+Aim to integrate the test suite into a CI/CD pipeline (e.g., GitHub Actions, Jenkins) to catch regressions early and reduce manual test execution overhead.
+
+---
