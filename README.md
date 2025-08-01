@@ -1,4 +1,4 @@
-# Serenity JUnit Starter project
+# Automated Web Testing Project 
 
 Get started quickly with Serenity BDD and JUnit 5 with this simple starter project. 
 
