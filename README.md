@@ -174,9 +174,6 @@ This document reflects on the collaborative work done in the Serenity JUnit Star
 ### 🧑‍💻 Pair Programming  
 Working in pairs led to higher code quality and fewer bugs. It also encouraged active knowledge sharing and made troubleshooting more efficient. Team members were able to divide tasks logically, review each other’s code, and iterate quickly.
 
-### 📌 Dependency Mapping via Topological Sort  
-Using a topological sort to structure test case execution brought much-needed clarity to dependencies. It ensured that test cases ran in a logical order, reducing failures due to unhandled prerequisites.
-
 ### 🔀 Branching and Merging Workflow  
 Using separate feature branches per test case and merging them into the main branch after review gave hands-on experience with Git workflows. This not only improved version control practices but also taught conflict resolution and collaborative development strategies.
 
