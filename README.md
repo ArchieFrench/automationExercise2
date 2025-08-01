@@ -143,18 +143,3 @@ Starting with just Selenium and JUnit would have reduced the cognitive load on t
 
 ---
 
-## 📘 Key Takeaways for Future Projects
-
-### 🛠️ Start Simple  
-Begin with a minimal viable test setup. Once core test flows are stable and the team is comfortable, introduce advanced tools or integrations incrementally. Simplicity early on allows for rapid onboarding and more consistent execution.
-
-### 📈 Build for Stability First  
-Handle flaky elements (e.g., pop-ups, animations) early in the test lifecycle. Add retry logic, wait conditions, or headless testing to ensure test runs are deterministic and reproducible.
-
-### 🗂️ Establish Testing Standards  
-Implement templates for test case design, naming conventions, and assertions to ensure uniformity across the codebase. This reduces ramp-up time for new contributors and makes maintenance easier.
-
-### 🔁 Continuous Integration Ready  
-Aim to integrate the test suite into a CI/CD pipeline (e.g., GitHub Actions, Jenkins) to catch regressions early and reduce manual test execution overhead.
-
----
