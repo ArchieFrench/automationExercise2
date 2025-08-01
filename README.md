@@ -72,6 +72,8 @@ The system under test is a **web-based eCommerce application** where users can b
 ## 🐞 Defects & Suggested Actions
 
 ### 1. Unconventional Signup Flow
+<img width="695" height="403" alt="image" src="https://github.com/user-attachments/assets/c76e3311-6ee1-4deb-90d7-ad793c2a35db" />
+
 
 **Description:**  
 Unlike standard signup forms that present fields like **Email**, **Password**, and **Confirm Password** on a single page, this application uses a two-step process:
