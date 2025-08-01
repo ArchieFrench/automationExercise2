@@ -82,15 +82,49 @@ The system under test is a **web-based eCommerce application** where users can b
 ---
 
 🐞 Defects & Suggested Actions
-Unconventional Signup Flow:
-Unlike typical registration forms that request email, password, and confirm password on a single page, this website initiates signup with only name and email. Upon submission, the user is redirected to a second page that collects more detailed information (e.g., password, date of birth, title, etc.).
+1. Unconventional Signup Flow
+Why it’s a defect:
 
-Action: Update test cases to treat this as a multi-step form flow, ensuring the initial input leads correctly to the second form. Add checks for page transitions and validation between stages.
+Expected behavior: Most websites present a single-step form where users enter all essential credentials (email, password, confirm password) before creating an account. This is intuitive, familiar to users, and aligns with standard UX design.
 
-Country-City Mismatch Validation Issue:
-On the automationtestingexercise website, users can select "India" as the country but still input a non-Indian city such as "Glasgow" without triggering a validation error. This breaks geographic consistency and could allow invalid user profiles.
+Actual behavior: The site begins the signup with just "Name" and "Email," then unexpectedly redirects to a separate page for the rest of the information. This non-standard flow:
 
-Action: Enhance validation rules to ensure city selection matches the selected country. Automation should include negative test cases to catch such inconsistencies.
+Breaks user expectations.
+
+Can confuse automation scripts that are written assuming a single form submission.
+
+Increases the chance of user drop-off if the transition is not handled smoothly.
+
+Why it matters for testing: This is a flow-based form, not a flat form. Many automation frameworks treat form submission as a single event, so this requires special handling in scripts to manage the transition between pages and ensure form continuity.
+
+Suggested Action:
+
+Clearly document and handle the multi-step flow in test cases.
+
+Ensure test automation recognizes the change in context (e.g., page navigation, DOM changes).
+
+2. Country-City Mismatch Validation Issue
+Why it’s a defect:
+
+Expected behavior: When a user selects a country (e.g., India), the system should restrict or validate the city field to ensure consistency (e.g., only Indian cities allowed).
+
+Actual behavior: You can enter a city like "Glasgow" (a UK city) even when "India" is selected as the country — and the system accepts it without error.
+
+Why this is a problem:
+
+It undermines data integrity — results in nonsensical or contradictory user profiles.
+
+Real-world systems using this data (e.g., shipping, marketing) could fail or behave unpredictably.
+
+It’s a missed validation opportunity, and automation scripts may pass despite flawed user input.
+
+This is a clear business logic flaw — even if the field technically allows free text, it should be validated in context.
+
+Suggested Action:
+
+Add validation checks to ensure the entered city logically matches the selected country.
+
+Include negative test cases in automation to ensure invalid combinations are rejected.
 
 
 ---
