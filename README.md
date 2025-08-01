@@ -81,11 +81,17 @@ The system under test is a **web-based eCommerce application** where users can b
 
 ---
 
-### 🐞 Defects & Suggested Actions  
-- **Cart Functionality (TC12)**: Issues found with validation of cart totals and item removal.  
-  - *Action*: Enhance automation steps to include validation of subtotal, total, and item removal logic.  
-- **Intermittent Login Delay**: Occasional timeout during login in automated runs.  
-  - *Action*: Add dynamic wait conditions instead of static waits.  
+🐞 Defects & Suggested Actions
+Unconventional Signup Flow:
+Unlike typical registration forms that request email, password, and confirm password on a single page, this website initiates signup with only name and email. Upon submission, the user is redirected to a second page that collects more detailed information (e.g., password, date of birth, title, etc.).
+
+Action: Update test cases to treat this as a multi-step form flow, ensuring the initial input leads correctly to the second form. Add checks for page transitions and validation between stages.
+
+Country-City Mismatch Validation Issue:
+On the automationtestingexercise website, users can select "India" as the country but still input a non-Indian city such as "Glasgow" without triggering a validation error. This breaks geographic consistency and could allow invalid user profiles.
+
+Action: Enhance validation rules to ensure city selection matches the selected country. Automation should include negative test cases to catch such inconsistencies.
+
 
 ---
 
