@@ -2,6 +2,19 @@
 
 Get started quickly with Serenity BDD and JUnit 5 with this simple starter project. 
 
+---
+
+### 📂 Project Organisation  
+- **Dependency Mapping**: Test cases were broken down into dependencies using a **topological sort**, ensuring execution order was logical and efficient.  
+- **Project Board (Trello)**: Used to visualise progress and manage test case assignments.  
+- **Pair Work**: We split into pairs and each implemented a test case.  
+- **Branching Strategy**: Each pair uploaded their test cases to **respective feature branches**, which were later merged into the **main master branch** after review.  
+- **Merge Conflicts**: Addressed collaboratively to ensure a clean integration of all completed test cases.  
+- **README**: Provides setup instructions, execution commands, and reporting guide.  
+- **Test Approach**: Prioritised automating high-impact user flows first (login, search, add-to-cart).  
+
+---
+
 ## Get the code
 
 Click on the [Use This Template button](https://github.com/serenity-bdd/serenity-junit-starter/generate) to create a new project in your own Github account. 
@@ -140,15 +153,12 @@ On the product listing page, a persistent advertisement banner appears at the bo
 
 ---
 
-### 📂 Project Organisation  
-- **Dependency Mapping**: Test cases were broken down into dependencies using a **topological sort**, ensuring execution order was logical and efficient.  
-- **Project Board (Trello)**: Used to visualise progress and manage test case assignments.  
-- **Pair Work**: We split into pairs and each implemented a test case.  
-- **Branching Strategy**: Each pair uploaded their test cases to **respective feature branches**, which were later merged into the **main master branch** after review.  
-- **Merge Conflicts**: Addressed collaboratively to ensure a clean integration of all completed test cases.  
-- **README**: Provides setup instructions, execution commands, and reporting guide.  
-- **Test Approach**: Prioritised automating high-impact user flows first (login, search, add-to-cart).  
-
+### 🚫 Blockers
+- **Consent To Cookies**: The Locator struggled to reliably find the consent button regardless of extraction methods we have each tried.
+- There is a workaround to this by pressing the consent button manually each time, it is not ideal but it allows the other scripts to run.
+- This could be for a number of reasons, potentially because we each used different testing frameworks or errors with our setup environment or the website itself.
+- Because the tests could still executed with valuable results and there is a manageable workaround it took low priority
+  
 ---
 
 ### 🔄 Retrospective / Lessons Learned  
